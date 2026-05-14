@@ -12,8 +12,8 @@ body {
 
 /* Cabeçalho */
 header {
-  background: #006994;
-  color: white;
+  background: white;
+  color: #2E2A5C;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -56,7 +56,7 @@ header {
 .logo-subtext {
   font-family: 'Quicksand', sans-serif;
   font-size: 0.75rem;
-  color: #d8f4ff;
+  color: #666;
   margin-top: 2px;
   text-transform: lowercase;
 }
@@ -74,25 +74,26 @@ nav ul.menu li {
 }
 
 nav ul.menu li a {
-  color: white;
+  color: #2E2A5C;
   text-decoration: none;
   padding: 10px 15px;
   display: block;
 }
 
 nav ul.menu li:hover {
-  background: #004d66;
+  background: #f0f0f0;
 }
 
 nav ul.submenu {
   display: none;
   position: absolute;
-  background: #004d66;
+  background: white;
   list-style: none;
   margin: 0;
   padding: 0;
   top: 100%;
   left: 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 nav ul.menu li:hover .submenu {
@@ -101,7 +102,7 @@ nav ul.menu li:hover .submenu {
 
 nav ul.submenu li a {
   padding: 10px;
-  color: white;
+  color: #2E2A5C;
 }
 
 /* Banner */
