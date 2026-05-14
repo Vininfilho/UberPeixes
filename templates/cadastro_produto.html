@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Produtos - Backoffice</title>
+  <link rel="stylesheet" href="../static/style/cadastro.css">
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo">⚙️</div>
+    <h1>Backoffice - Loja Aquática</h1>
+    <nav>
+      <ul class="menu">
+        <li>
+          <a href="#">Cadastro</a>
+          <ul class="submenu">
+            <li><a href="#">Produtos</a></li>
+            <li><a href="#">Categorias</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo -->
+  <main>
+    <section class="form-container">
+      <h2>Cadastro de Produto</h2>
+      <form class="produto-form">
+        <label for="nome">Nome do Produto</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite o nome" required>
+
+        <label for="categoria">Categoria</label>
+        <select id="categoria" name="categoria" required>
+          <option value="">Selecione...</option>
+          <option value="equipamentos">Equipamentos</option>
+          <option value="animais">Animais</option>
+          <option value="alimentos">Alimentos</option>
+        </select>
+
+        <label for="preco">Preço</label>
+        <input type="number" id="preco" name="preco" step="0.01" placeholder="Digite o preço" required>
+
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" name="descricao" rows="4" placeholder="Detalhes do produto"></textarea>
+
+        <label for="imagem">Imagem do Produto</label>
+        <input type="file" id="imagem" name="imagem" accept="image/*">
+
+        <button type="submit">Salvar Produto</button>
+      </form>
+    </section>
+
+    <!-- Listagem de Produtos -->
+    <section class="lista-container">
+      <h2>Produtos Cadastrados</h2>
+      <table class="tabela-produtos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Aquário 20L</td>
+            <td>Equipamentos</td>
+            <td>R$ 199,90</td>
+            <td>Aquário de vidro com tampa.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Peixe Betta</td>
+            <td>Animais</td>
+            <td>R$ 29,90</td>
+            <td>Peixe ornamental de fácil cuidado.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Ração Premium</td>
+            <td>Alimentos</td>
+            <td>R$ 15,90</td>
+            <td>Ração balanceada para peixes tropicais.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
