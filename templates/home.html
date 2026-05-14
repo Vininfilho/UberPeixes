@@ -1,51 +1,139 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja Aquática</title>
-  <link rel="stylesheet" href="../static/style/main.css">
-</head>
-<body>
-  <!-- Cabeçalho -->
-  <header>
-    <div class="logo">🐠</div>
-    <h1>Loja Aquática</h1>
-    <nav>
-      <ul class="menu">
-        <li><a href="#">Home</a></li>
-        <li>
-          <a href="#">Produtos</a>
-          <ul class="submenu">
-            <li><a href="#">Equipamentos</a></li>
-            <li><a href="#">Animais</a></li>
-            <li><a href="#">Alimentos</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Sobre Nós</a></li>
-        <li><a href="#">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+{% extends "base.html" %}
 
-  <!-- Banner -->
-  <section class="banner">
-    <h2>Promoção Especial: 20% OFF em Aquários!</h2>
+{% block title %}Início - UberPeixes{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/home.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <!-- HERO + CATEGORIAS -->
+  <div class="hero-categorias-wrapper">
+    
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Seu mundo<br>Subaquático<br>Começa aqui</h2>
+        <p>Tudo para o seu aquário:<br>Peixes, plantas, acessórios<br>e muito mais!</p>
+        <a href="{{ url_for('produtos') }}" class="btn">Ver produtos</a>
+      </div>
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section class="categorias-section">
+      <div class="categoria-grid">
+
+        <div class="categoria-card">
+          <img src="{{ url_for('static', filename='images/peixes.png') }}">
+          <h3>Peixes</h3>
+        </div>
+
+        <div class="categoria-card">
+          <img src="{{ url_for('static', filename='images/plantas.png') }}">
+          <h3>Plantas</h3>
+        </div>
+
+        <div class="categoria-card">
+          <img src="{{ url_for('static', filename='images/decoracoes.png') }}">
+          <h3>Decorações</h3>
+        </div>
+
+        <div class="categoria-card">
+          <img src="{{ url_for('static', filename='images/equipamentos.png') }}">
+          <h3>Equipamentos</h3>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- DESTAQUES -->
+  <section class="destaques">
+    <h2>Destaques</h2>
+
+    <div class="lista-produtos">
+
+      <div class="produto-card">
+        <img src="https://via.placeholder.com/300x200">
+        <h3>Aquário Retangular 60x30x36cm</h3>
+        <p class="preco">R$ 299,90</p>
+      </div>
+
+      <div class="produto-card">
+        <img src="https://via.placeholder.com/300x200">
+        <h3>Filtro Canister 1500L/H</h3>
+        <p class="preco">R$ 499,90</p>
+      </div>
+
+      <div class="produto-card">
+        <img src="https://via.placeholder.com/300x200">
+        <h3>Luminária LED Slim 60cm</h3>
+        <p class="preco">R$ 189,90</p>
+      </div>
+
+      <div class="produto-card">
+        <img src="https://via.placeholder.com/300x200">
+        <h3>Planta Anubias Nana</h3>
+        <p class="preco">R$ 24,90</p>
+      </div>
+
+    </div>
   </section>
 
-  <!-- Conteúdo -->
-  <main>
-    <section>
-      <h2>Bem-vindo à Loja Aquática</h2>
-      <p>Encontre tudo para seu aquário: equipamentos, peixes, camarões e alimentos de qualidade.</p>
-    </section>
-  </main>
+  <div class="institucional-cta-wrapper">
 
-  <!-- Rodapé -->
-  <footer>
-    <p>📍 Endereço: Rua das Águas, 123 - Uberlândia/MG</p>
-    <p>⏰ Horário: Seg-Sáb das 9h às 18h</p>
-    <p>📱 Redes sociais: @lojaaquatica</p>
-  </footer>
-</body>
-</html>
+    <!-- INSTITUCIONAL -->
+    <section class="institucional">
+      <div class="institucional-text">
+        <h2>Paixão por aquarismo, compromisso com você.</h2>
+        <p>Te ajudamos a criar e manter um aquário saudável e incrível.</p>
+        <a href="{{ url_for('sobre') }}" class="btn">Sobre nós</a>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+      <div class="cta-text">
+        <h2>Pronto para transformar<br>seu aquário?</h2>
+        <p>Encontre tudo o que você precisa<br>em um só lugar.</p>
+        <a href="{{ url_for('produtos') }}" class="btn cta-btn">Ver todos os produtos</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- BENEFÍCIOS -->
+  <section class="beneficios">
+    <h2>Por que escolher a UberPeixes?</h2>
+
+    <div class="beneficios-grid">
+
+      <div class="beneficio-item">
+        <i class="fa-solid fa-truck"></i>
+        <p>Entrega rápida<br>para todo o Brasil</p>
+      </div>
+
+      <div class="beneficio-item">
+        <i class="fa-solid fa-shield-halved"></i>
+        <p>Produtos de<br>qualidade</p>
+      </div>
+
+      <div class="beneficio-item">
+        <i class="fa-solid fa-credit-card"></i>
+        <p>Compra segura<br>site 100% protegido</p>
+      </div>
+
+      <div class="beneficio-item">
+        <i class="fa-solid fa-headset"></i>
+        <p>Atendimento<br>especializado</p>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+{% endblock %}

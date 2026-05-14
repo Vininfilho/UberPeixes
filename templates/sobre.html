@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Sobre Nós - UberPeixes{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+{% endblock %}
+
+{% block content %}
+  <main>
+    <section class="sobre-container">
+      <h2>Sobre Nós</h2>
+      <p>
+        A <strong>UberPeixes</strong> nasceu com a missão de trazer praticidade e qualidade para os amantes do aquarismo.
+        Nosso objetivo é oferecer produtos, animais e acessórios que transformem o cuidado com aquários em uma experiência única.
+      </p>
+      <p>
+        Trabalhamos com dedicação para garantir que cada cliente encontre o que precisa — desde equipamentos modernos até alimentos
+        balanceados para seus peixes ornamentais.
+      </p>
+      <p>
+        Somos apaixonados pelo mundo aquático e acreditamos que cada aquário é um universo cheio de vida e beleza.
+      </p>
+    </section>
+  </main>
+{% endblock %}

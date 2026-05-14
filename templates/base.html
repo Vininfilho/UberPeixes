@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Uberpeixes{% endblock %}</title>
+
+  <!-- Fonte estilizada -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo Uberpeixes" class="logo-img">
+      <div class="logo-text-wrapper">
+        <h1 class="logo-text"><span class="logo-text-uber">Uber</span><span class="logo-text-peixes">peixes</span></h1>
+        <span class="logo-subtext">peixes ornamentais</span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="{{ url_for('home') }}">Início</a></li>
+        <li><a href="{{ url_for('produtos') }}">Produtos</a></li>
+        <li><a href="{{ url_for('sobre') }}">Sobre Nós</a></li>
+        <li><a href="{{ url_for('contato') }}">Contato</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo dinâmico -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2026 UberPeixes - Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

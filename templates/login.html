@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Backoffice</title>
-  <link rel="stylesheet" href="../static/style/login.css">
+  <!-- Ajuste para Flask -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/login.css') }}">
 </head>
 <body>
   <div class="login-container">

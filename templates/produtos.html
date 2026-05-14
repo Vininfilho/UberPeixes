@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produtos - Loja Aquática</title>
-  <link rel="stylesheet" href="../static/style/main.css">
-</head>
-<body>
-  <header>
-    <div class="logo">🐠</div>
-    <h1>Loja Aquática</h1>
-    <nav>
-      <ul class="menu">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="produtos.html">Produtos</a></li>
-        <li><a href="sobre.html">Sobre Nós</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+{% extends "base.html" %}
 
+{% block title %}Produtos - UberPeixes{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/produtos.css') }}">
+{% endblock %}
+
+{% block content %}
   <main class="produtos-container">
     <h2>Produtos</h2>
 
@@ -58,11 +45,4 @@
       </div>
     </div>
   </main>
-
-  <footer>
-    <p>📍 Rua das Águas, 123 - Uberlândia/MG</p>
-    <p>⏰ Seg-Sáb das 9h às 18h</p>
-    <p>📱 @lojaaquatica</p>
-  </footer>
-</body>
-</html>
+{% endblock %}

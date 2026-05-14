@@ -3,6 +3,11 @@ body {
   margin: 0;
   background: #f0f8ff;
   color: #333;
+
+  /* Mantém o rodapé no fim da tela */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Cabeçalho */
@@ -11,18 +16,52 @@ header {
   color: white;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 10px 20px;
 }
 
-header .logo {
-  font-size: 2rem;
-  margin-right: 10px;
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-header h1 {
-  flex: 1;
+.logo-img {
+  width: 60px;
+  height: auto;
+  border-radius: 50%;
 }
 
+.logo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.logo-text {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.logo-text-uber {
+  color: #2E2A5C;
+}
+
+.logo-text-peixes {
+  color: #3A8DB5;
+}
+
+.logo-subtext {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.75rem;
+  color: #d8f4ff;
+  margin-top: 2px;
+  text-transform: lowercase;
+}
+
+/* Menu */
 nav ul.menu {
   list-style: none;
   margin: 0;
@@ -79,66 +118,52 @@ nav ul.submenu li a {
 /* Conteúdo principal */
 main {
   padding: 20px;
+  flex: 1;
 }
 
-.produtos-container {
-  padding: 20px;
-}
-
-.filtros {
+/* 🔥 CATEGORIAS (AQUI ESTAVA O PROBLEMA) */
+.categorias {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.filtros input,
-.filtros select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Cards de produtos */
-.lista-produtos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-content: center;
   gap: 20px;
+  flex-wrap: wrap; /* quebra no celular */
 }
 
-.produto-card {
+.card {
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
   text-align: center;
-  padding: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
 }
 
-.produto-card img {
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
   width: 100%;
-  border-radius: 6px;
+  height: 180px;
+  object-fit: cover;
 }
 
-.produto-card h3 {
-  margin: 10px 0 5px;
+.card h3 {
+  padding: 15px;
+  margin: 0;
 }
 
-.produto-card .preco {
-  color: #006994;
-  font-weight: bold;
-}
+/* 📱 Responsivo */
+@media (max-width: 768px) {
+  .categorias {
+    flex-direction: column;
+    align-items: center;
+  }
 
-.produto-card button {
-  background: #006994;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.produto-card button:hover {
-  background: #004d66;
+  .card {
+    width: 90%;
+  }
 }
 
 /* Rodapé */
