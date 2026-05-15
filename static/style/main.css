@@ -200,8 +200,10 @@ main {
 
 /* Rodapé */
 footer {
-  background: #0A1A33;
-  color: #3A8DB5;
+  background: linear-gradient(180deg, #0A1A33 0%, #152847 100%);
+  color: #fff;
   text-align: center;
   padding: 15px;
+  position: relative;
+  z-index: 1101;
 }

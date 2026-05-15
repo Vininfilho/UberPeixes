@@ -1,31 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Backoffice</title>
-  <!-- Ajuste para Flask -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='style/login.css') }}">
-</head>
-<body>
-  <div class="login-container">
-    <h2>Login - Backoffice</h2>
+{% extends "base.html" %}
 
-    <!-- Exibe mensagem de erro se houver -->
-    {% if erro %}
-      <p class="erro">{{ erro }}</p>
-    {% endif %}
+{% block title %}Login - Backoffice{% endblock %}
 
-    <!-- Formulário envia via POST -->
-    <form class="login-form" action="{{ url_for('login.login') }}" method="POST">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/login.css') }}">
+{% endblock %}
 
-      <label for="senha">Senha</label>
-      <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+{% block content %}
+<div class="login-container">
+  <h2>Login - Backoffice</h2>
 
-      <button type="submit">Entrar</button>
-    </form>
-  </div>
-</body>
+  {% if erro %}
+    <p class="erro">{{ erro }}</p>
+  {% endif %}
+
+  <form class="login-form" action="{{ url_for('login.login') }}" method="POST">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+
+    <label for="senha">Senha</label>
+    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+    <button type="submit">Entrar</button>
+  </form>
+</div>
+{% endblock %}
+
 </html>

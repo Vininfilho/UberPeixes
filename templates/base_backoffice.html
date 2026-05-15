@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/backoffice.css') }}">
+<script defer src="{{ url_for('static', filename='js/backoffice.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="backoffice-wrapper">
+  <aside class="sidebar closed" id="sidebar">
+    <div class="sidebar-header">
+      <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Abrir menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <span class="sidebar-title">MENU</span>
+      <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Fechar menu">×</button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-link" href="{{ url_for('cadastro_produto') }}"><span class="link-icon icon-cart"></span>Produtos</a>
+      <a class="sidebar-link" href="{{ url_for('cadastro_categoria') }}"><span class="link-icon icon-folder"></span>Categorias</a>
+      <a class="sidebar-link" href="{{ url_for('backoffice.cadastro_marca') }}"><span class="link-icon icon-tag"></span>Marcas</a>
+      <a class="sidebar-link" href="{{ url_for('backoffice.cadastro_usuario') }}"><span class="link-icon icon-user"></span>Usuários</a>
+      <a class="sidebar-link" href="{{ url_for('backoffice.cadastro_pedido') }}"><span class="link-icon icon-order"></span>Pedidos</a>
+      <a class="sidebar-link" href="{{ url_for('backoffice.cadastro_item_pedido') }}"><span class="link-icon icon-settings"></span>Configurações</a>
+    </nav>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <main class="backoffice-content">
+    {% block backoffice_content %}{% endblock %}
+  </main>
+</div>
+{% endblock %}

@@ -1,23 +1,10 @@
-{% extends "base.html" %}
+{% extends "base_backoffice.html" %}
 
 {% block title %}Backoffice - UberPeixes{% endblock %}
 
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='style/backoffice.css') }}">
-{% endblock %}
-
-{% block content %}
-  <section class="backoffice-container">
-    <section>
-      <h2>Bem-vindo ao Backoffice</h2>
-      <p>Área restrita para funcionários. Utilize o menu para gerenciar produtos e categorias.</p>
-
-      <nav class="backoffice-nav">
-        <ul class="submenu">
-          <li><a href="{{ url_for('cadastro_produto') }}">Cadastro de Produtos</a></li>
-          <li><a href="{{ url_for('cadastro_categoria') }}">Cadastro de Categorias</a></li>
-        </ul>
-      </nav>
-    </section>
-  </section>
+{% block backoffice_content %}
+<section class="backoffice-container">
+  <h2>Bem-vindo ao Backoffice</h2>
+  <p>Área restrita para funcionários. Utilize o menu lateral para gerenciar produtos e categorias.</p>
+</section>
 {% endblock %}
