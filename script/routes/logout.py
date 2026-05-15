@@ -1,8 +1,8 @@
-from flask import Blueprint, session, jsonify
+from flask import Blueprint, session, redirect, url_for
 
 logout_bp = Blueprint('logout', __name__)
 
 @logout_bp.route('/logout', methods=['POST'])
 def logout():
     session.clear()
-    return jsonify({'mensagem': 'Logout realizado com sucesso'})
+    return redirect(url_for('home'))

@@ -5,71 +5,45 @@ body {
   color: #333;
 }
 
-/* Cabeçalho */
-header {
-  background: #444;
-  color: white;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
+.backoffice-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-header .logo {
-  font-size: 2rem;
-  margin-right: 10px;
+.backoffice-container h2 {
+  color: #444;
 }
 
-header h1 {
-  flex: 1;
+.backoffice-container p {
+  color: #555;
 }
 
-nav ul.menu {
+.backoffice-nav {
+  margin-top: 20px;
+}
+
+.backoffice-nav .submenu {
   list-style: none;
-  margin: 0;
   padding: 0;
-  display: flex;
 }
 
-nav ul.menu li {
-  position: relative;
+.backoffice-nav .submenu li {
+  margin-bottom: 10px;
 }
 
-nav ul.menu li a {
-  color: white;
+.backoffice-nav .submenu li a {
+  color: #444;
   text-decoration: none;
   padding: 10px 15px;
-  display: block;
+  background: #f1f1f1;
+  border-radius: 6px;
+  display: inline-block;
 }
 
-nav ul.menu li:hover {
-  background: #222;
-}
-
-nav ul.submenu {
-  display: none;
-  position: absolute;
-  background: #222;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  top: 100%;
-  left: 0;
-}
-
-nav ul.menu li:hover .submenu {
-  display: block;
-}
-
-nav ul.submenu li a {
-  padding: 10px;
-  color: white;
-}
-
-/* Conteúdo */
-main {
-  padding: 20px;
-}
-
-main h2 {
-  color: #444;
+.backoffice-nav .submenu li a:hover {
+  background: #e0e0e0;
 }

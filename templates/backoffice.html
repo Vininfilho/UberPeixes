@@ -7,28 +7,17 @@
 {% endblock %}
 
 {% block content %}
-  <!-- Cabeçalho específico do backoffice -->
-  <header>
-    <div class="logo">⚙️</div>
-    <h1>Backoffice - UberPeixes</h1>
-    <nav>
-      <ul class="menu">
-        <li>
-          <a href="#">Cadastro</a>
-          <ul class="submenu">
-            <li><a href="{{ url_for('cadastro_produto') }}">Produtos</a></li>
-            <li><a href="{{ url_for('cadastro_categoria') }}">Categorias</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Conteúdo -->
-  <main>
+  <section class="backoffice-container">
     <section>
       <h2>Bem-vindo ao Backoffice</h2>
-      <p>Área restrita para funcionários. Utilize o menu acima para gerenciar produtos e categorias.</p>
+      <p>Área restrita para funcionários. Utilize o menu para gerenciar produtos e categorias.</p>
+
+      <nav class="backoffice-nav">
+        <ul class="submenu">
+          <li><a href="{{ url_for('cadastro_produto') }}">Cadastro de Produtos</a></li>
+          <li><a href="{{ url_for('cadastro_categoria') }}">Cadastro de Categorias</a></li>
+        </ul>
+      </nav>
     </section>
-  </main>
+  </section>
 {% endblock %}

@@ -36,11 +36,17 @@ def contato():
 # Página de Categoria
 @app.route('/cadastro_categoria')
 def cadastro_categoria():
+    # Protege rota: só acessível se logado
+    if not session.get('user_id'):
+        return redirect(url_for('login.login'))
     return render_template('cadastro_categoria.html')
 
 # Página de Produto 
 @app.route('/cadastro_produto')
 def cadastro_produto():
+    # Protege rota: só acessível se logado
+    if not session.get('user_id'):
+        return redirect(url_for('login.login'))
     return render_template('cadastro_produto.html')
 
 # Página de Backoffice (só acessível após login)

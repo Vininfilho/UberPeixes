@@ -105,6 +105,37 @@ nav ul.submenu li a {
   color: #2E2A5C;
 }
 
+.logo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logo-text-wrapper .user-info {
+  color: #2E2A5C;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #2E2A5C;
+  padding: 6px;
+}
+
+.logout-btn svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
 /* Banner */
 .banner {
   background: url('https://via.placeholder.com/1200x300') no-repeat center;
@@ -169,8 +200,8 @@ main {
 
 /* Rodapé */
 footer {
-  background: #006994;
-  color: white;
+  background: #0A1A33;
+  color: #3A8DB5;
   text-align: center;
   padding: 15px;
 }
