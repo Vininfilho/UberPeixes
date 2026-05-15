@@ -1,15 +1,20 @@
-from flask import Flask, render_template
-from script.utils.bd import supabase
+import os
+from flask import Flask, render_template, session, redirect, url_for
+from dotenv import load_dotenv
+from script.routes import register_blueprints
+
+# Carrega variáveis do .env
+load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("SECRET_KEY", "chave-padrao-local")
 
-#Login
-@app.route('/login')
-def login():
-    return render_template('login.html')
+# Registra todos os blueprints (login, logout, register, produtos)
+register_blueprints(app)
 
 # Página inicial
 @app.route('/')
+@app.route('/home')
 def home():
     return render_template('home.html')
 
@@ -38,9 +43,11 @@ def cadastro_categoria():
 def cadastro_produto():
     return render_template('cadastro_produto.html')
 
-# Página de Backoffice
+# Página de Backoffice (só acessível após login)
 @app.route('/backoffice')
 def backoffice():
+    if not session.get('user_id'):
+        return redirect(url_for('login.login'))
     return render_template('backoffice.html')
 
 if __name__ == '__main__':
