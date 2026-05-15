@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from script.utils.bd import supabase
 
 app = Flask(__name__)
 
