@@ -7,20 +7,24 @@
     <h2>{{ imagem and 'Editar Imagem de Produto' or 'Nova Imagem de Produto' }}</h2>
   </div>
 
-  <form method="post" class="cadastro-form">
+  <!-- enctype necessário para upload -->
+  <form method="post" enctype="multipart/form-data" class="cadastro-form">
     <div class="form-group">
       <label for="produto_id">Produto</label>
       <select id="produto_id" name="produto_id" required>
         <option value="">Selecione...</option>
         {% for produto in produtos %}
-          <option value="{{ produto.id }}" {% if imagem and imagem.produto_id == produto.id %}selected{% endif %}>{{ produto.name }}</option>
+          <option value="{{ produto.id }}" {% if imagem and imagem.produto_id == produto.id %}selected{% endif %}>
+            {{ produto.name }}
+          </option>
         {% endfor %}
       </select>
     </div>
 
+    <!-- Upload de arquivo substitui o campo URL -->
     <div class="form-group">
-      <label for="url">URL da Imagem</label>
-      <input type="text" id="url" name="url" value="{{ imagem.url if imagem else '' }}" required>
+      <label for="imagem">Upload da Imagem</label>
+      <input type="file" id="imagem" name="imagem" accept="image/*" required>
     </div>
 
     <div class="form-group">
@@ -41,8 +45,12 @@
     </div>
 
     <div class="form-actions">
-      <button type="submit" class="btn btn-primary">{{ imagem and 'Salvar alterações' or 'Criar imagem' }}</button>
-      <a class="btn btn-secondary" href="{{ url_for('backoffice.cadastro_imagem_produto') }}">Voltar à lista</a>
+      <button type="submit" class="btn btn-primary">
+        {{ imagem and 'Salvar alterações' or 'Criar imagem' }}
+      </button>
+      <a class="btn btn-secondary" href="{{ url_for('backoffice.cadastro_imagem_produto') }}">
+        Voltar à lista
+      </a>
     </div>
   </form>
 {% endblock %}

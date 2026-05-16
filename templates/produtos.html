@@ -23,26 +23,14 @@
 
     <!-- Listagem de produtos -->
     <div class="lista-produtos">
-      <div class="produto-card">
-        <img src="https://via.placeholder.com/200x150" alt="Aquário 20L">
-        <h3>Aquário 20L</h3>
-        <p class="preco">R$ 199,90</p>
-        <button>Adicionar ao carrinho</button>
-      </div>
-
-      <div class="produto-card">
-        <img src="https://via.placeholder.com/200x150" alt="Peixe Betta">
-        <h3>Peixe Betta</h3>
-        <p class="preco">R$ 29,90</p>
-        <button>Adicionar ao carrinho</button>
-      </div>
-
-      <div class="produto-card">
-        <img src="https://via.placeholder.com/200x150" alt="Ração Premium">
-        <h3>Ração Premium</h3>
-        <p class="preco">R$ 15,90</p>
-        <button>Adicionar ao carrinho</button>
-      </div>
+      {% for produto in produtos %}
+        <div class="produto-card">
+          <img src="{{ produto.imagem_url }}" alt="{{ produto.name }}">
+          <h3>{{ produto.name }}</h3>
+          <p class="preco">R$ {{ "%.2f"|format(produto.price) }}</p>
+          <button>Adicionar ao carrinho</button>
+        </div>
+      {% endfor %}
     </div>
   </main>
 {% endblock %}

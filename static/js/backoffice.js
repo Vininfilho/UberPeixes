@@ -4,12 +4,27 @@ const toggleButton = document.getElementById('sidebarToggle');
 const sidebarOverlay = document.getElementById('sidebarOverlay');
 const sidebarClose = document.getElementById('sidebarClose');
 
+let isMenuOpen = false;
+
+window.addEventListener('DOMContentLoaded', () => {
+  const currentUrl = window.location.href;
+  const isBackofficePage = currentUrl.includes('/backoffice');
+
+  body.classList.add('backoffice-page');
+  if (isBackofficePage) {
+    openSidebar();
+  } else {
+    closeSidebar();
+  }
+});
+
 const openSidebar = () => {
   sidebar.classList.add('open');
   sidebar.classList.remove('closed');
   toggleButton.classList.add('hidden');
   body.classList.add('sidebar-open');
   toggleButton.setAttribute('aria-label', 'Fechar menu');
+  isMenuOpen = true;
 };
 
 const closeSidebar = () => {
@@ -18,33 +33,17 @@ const closeSidebar = () => {
   toggleButton.classList.remove('hidden');
   body.classList.remove('sidebar-open');
   toggleButton.setAttribute('aria-label', 'Abrir menu');
+  isMenuOpen = false;
 };
 
 const toggleSidebar = () => {
-  if (sidebar.classList.contains('open')) {
+  if (isMenuOpen) {
     closeSidebar();
   } else {
     openSidebar();
   }
 };
-
-window.addEventListener('DOMContentLoaded', () => {
-  body.classList.add('backoffice-page');
-  if (window.innerWidth <= 900) {
-    closeSidebar();
-  } else {
-    openSidebar();
-  }
-});
 
 toggleButton?.addEventListener('click', toggleSidebar);
 sidebarClose?.addEventListener('click', closeSidebar);
 sidebarOverlay?.addEventListener('click', closeSidebar);
-
-window.addEventListener('resize', () => {
-  if (window.innerWidth <= 900) {
-    closeSidebar();
-  } else {
-    openSidebar();
-  }
-});

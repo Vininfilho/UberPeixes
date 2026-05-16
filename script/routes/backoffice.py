@@ -1,8 +1,17 @@
 from flask import Blueprint, render_template, session, redirect, url_for, request
 from werkzeug.security import generate_password_hash
+from werkzeug.utils import secure_filename
+import os
 from script.utils.bd import supabase
 
 backoffice_bp = Blueprint('backoffice', __name__)
+
+# Pasta onde as imagens serão salvas
+UPLOAD_FOLDER = 'static/images/Product_img'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @backoffice_bp.route('/backoffice')
 def backoffice():
@@ -150,10 +159,18 @@ def imagem_produto_detail(imagem_id=None):
 
     if request.method == 'POST':
         produto_id = request.form.get('produto_id') or None
-        url = request.form.get('url', '').strip()
+        file = request.files.get('imagem')
         nome_arquivo = request.form.get('nome_arquivo', '').strip()
         principal = request.form.get('principal') == 'on'
         ordem = request.form.get('ordem', '1') or '1'
+
+        url = None
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(UPLOAD_FOLDER, filename))
+            url = f'/static/images/Product_img/{filename}'
+            nome_arquivo = filename
+
         data = {
             'produto_id': int(produto_id) if produto_id else None,
             'url': url,
