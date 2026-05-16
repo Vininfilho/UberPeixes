@@ -1,0 +1,42 @@
+{% extends "base_backoffice.html" %}
+
+{% block title %}Lista de Categorias - UberPeixes{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/cadastro_categoria.css') }}">
+{% endblock %}
+
+{% block backoffice_content %}
+  <div class="page-header">
+    <h2>Categorias</h2>
+    <a class="btn btn-primary" href="{{ url_for('categoria_detail') }}">Criar nova categoria</a>
+  </div>
+
+  {% if categorias %}
+    <table class="list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for categoria in categorias %}
+          <tr>
+            <td>{{ categoria.id }}</td>
+            <td>{{ categoria.name }}</td>
+            <td>{{ categoria.description }}</td>
+            <td>
+              <a class="link-action" href="{{ url_for('categoria_detail', categoria_id=categoria.id) }}">Editar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há categorias cadastradas ainda.</p>
+  {% endif %}
+{% endblock %}

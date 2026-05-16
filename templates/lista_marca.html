@@ -1,0 +1,35 @@
+{% extends "base_backoffice.html" %}
+{% block title %}Lista de Marcas{% endblock %}
+{% block backoffice_content %}
+  <div class="page-header">
+    <h2>Marcas</h2>
+    <a class="btn btn-primary" href="{{ url_for('backoffice.marca_detail') }}">Criar nova marca</a>
+  </div>
+
+  {% if marcas %}
+    <table class="list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>País</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for marca in marcas %}
+          <tr>
+            <td>{{ marca.id }}</td>
+            <td>{{ marca.name }}</td>
+            <td>{{ marca.country }}</td>
+            <td>
+              <a class="link-action" href="{{ url_for('backoffice.marca_detail', marca_id=marca.id) }}">Editar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há marcas cadastradas ainda.</p>
+  {% endif %}
+{% endblock %}

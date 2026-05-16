@@ -1,0 +1,45 @@
+{% extends "base_backoffice.html" %}
+
+{% block title %}Lista de Produtos{% endblock %}
+
+{% block backoffice_content %}
+  <div class="page-header">
+    <h2>Produtos</h2>
+    <a class="btn btn-primary" href="{{ url_for('produto_detail') }}">Criar novo produto</a>
+  </div>
+
+  {% if produtos %}
+    <table class="list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Marca</th>
+          <th>Tipo</th>
+          <th>Preço</th>
+          <th>Estoque</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in produtos %}
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ category_map[item.category_id] if item.category_id else '-' }}</td>
+            <td>{{ brand_map[item.brand_id] if item.brand_id else '-' }}</td>
+            <td>{{ type_map[item.type_id] if item.type_id else '-' }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.stock_quantity }}</td>
+            <td>
+              <a class="link-action" href="{{ url_for('produto_detail', produto_id=item.id) }}">Editar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há produtos cadastrados ainda.</p>
+  {% endif %}
+{% endblock %}

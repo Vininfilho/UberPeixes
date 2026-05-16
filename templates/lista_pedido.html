@@ -1,0 +1,39 @@
+{% extends "base_backoffice.html" %}
+
+{% block title %}Lista de Pedidos{% endblock %}
+
+{% block backoffice_content %}
+  <div class="page-header">
+    <h2>Pedidos</h2>
+    <a class="btn btn-primary" href="{{ url_for('backoffice.pedido_detail') }}">Criar novo pedido</a>
+  </div>
+
+  {% if pedidos %}
+    <table class="list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuário</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Criado em</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pedido in pedidos %}
+          <tr>
+            <td>{{ pedido.id }}</td>
+            <td>{{ pedido.user_id or '-' }}</td>
+            <td>{{ pedido.status }}</td>
+            <td>{{ pedido.total_price }}</td>
+            <td>{{ pedido.created_at }}</td>
+            <td><a class="link-action" href="{{ url_for('backoffice.pedido_detail', pedido_id=pedido.id) }}">Editar</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há pedidos cadastrados.</p>
+  {% endif %}
+{% endblock %}

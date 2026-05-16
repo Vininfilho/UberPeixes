@@ -1,6 +1,31 @@
 {% extends "base_backoffice.html" %}
+
 {% block title %}Cadastro de Tipos de Produto{% endblock %}
+
 {% block backoffice_content %}
-<h2>Cadastro de Tipos de Produto</h2>
-<p>Em breve: formulário para cadastrar tipos de produto.</p>
+  <div class="page-header">
+    <h2>{{ tipo and 'Editar Tipo de Produto' or 'Novo Tipo de Produto' }}</h2>
+  </div>
+
+  <form method="post" class="cadastro-form">
+    <div class="form-group">
+      <label for="name">Nome do Tipo</label>
+      <input type="text" id="name" name="name" value="{{ tipo.name if tipo else '' }}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="category_id">Categoria</label>
+      <select id="category_id" name="category_id">
+        <option value="">Selecione...</option>
+        {% for category in categories %}
+          <option value="{{ category.id }}" {% if tipo and tipo.category_id == category.id %}selected{% endif %}>{{ category.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">{{ tipo and 'Salvar alterações' or 'Criar tipo' }}</button>
+      <a class="btn btn-secondary" href="{{ url_for('backoffice.cadastro_tipo_produto') }}">Voltar à lista</a>
+    </div>
+  </form>
 {% endblock %}

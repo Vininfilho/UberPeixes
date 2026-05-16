@@ -1,0 +1,39 @@
+{% extends "base_backoffice.html" %}
+
+{% block title %}Lista de Imagens de Produto{% endblock %}
+
+{% block backoffice_content %}
+  <div class="page-header">
+    <h2>Imagens de Produto</h2>
+    <a class="btn btn-primary" href="{{ url_for('backoffice.imagem_produto_detail') }}">Criar nova imagem</a>
+  </div>
+
+  {% if imagens %}
+    <table class="list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Produto</th>
+          <th>URL</th>
+          <th>Principal</th>
+          <th>Ordem</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for imagem in imagens %}
+          <tr>
+            <td>{{ imagem.id }}</td>
+            <td>{{ imagem.produto_id or '-' }}</td>
+            <td>{{ imagem.url }}</td>
+            <td>{{ imagem.principal }}</td>
+            <td>{{ imagem.ordem }}</td>
+            <td><a class="link-action" href="{{ url_for('backoffice.imagem_produto_detail', imagem_id=imagem.id) }}">Editar</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há imagens cadastradas.</p>
+  {% endif %}
+{% endblock %}

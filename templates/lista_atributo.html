@@ -1,0 +1,37 @@
+{% extends "base_backoffice.html" %}
+
+{% block title %}Lista de Atributos{% endblock %}
+
+{% block backoffice_content %}
+  <div class="page-header">
+    <h2>Atributos de Produto</h2>
+    <a class="btn btn-primary" href="{{ url_for('backoffice.atributo_detail') }}">Criar novo atributo</a>
+  </div>
+
+  {% if atributos %}
+    <table class="list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Produto</th>
+          <th>Nome</th>
+          <th>Valor</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for atributo in atributos %}
+          <tr>
+            <td>{{ atributo.id }}</td>
+            <td>{{ atributo.product_id or '-' }}</td>
+            <td>{{ atributo.attribute_name }}</td>
+            <td>{{ atributo.attribute_value }}</td>
+            <td><a class="link-action" href="{{ url_for('backoffice.atributo_detail', atributo_id=atributo.id) }}">Editar</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há atributos cadastrados.</p>
+  {% endif %}
+{% endblock %}

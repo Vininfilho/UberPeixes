@@ -1,0 +1,35 @@
+{% extends "base_backoffice.html" %}
+
+{% block title %}Lista de Tipos de Produto{% endblock %}
+
+{% block backoffice_content %}
+  <div class="page-header">
+    <h2>Tipos de Produto</h2>
+    <a class="btn btn-primary" href="{{ url_for('backoffice.tipo_produto_detail') }}">Criar novo tipo</a>
+  </div>
+
+  {% if tipos %}
+    <table class="list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tipo in tipos %}
+          <tr>
+            <td>{{ tipo.id }}</td>
+            <td>{{ tipo.name }}</td>
+            <td>{{ tipo.category_id or '-' }}</td>
+            <td><a class="link-action" href="{{ url_for('backoffice.tipo_produto_detail', tipo_id=tipo.id) }}">Editar</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há tipos de produto cadastrados ainda.</p>
+  {% endif %}
+{% endblock %}

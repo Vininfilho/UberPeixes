@@ -1,6 +1,46 @@
 {% extends "base_backoffice.html" %}
+
 {% block title %}Cadastro de Itens do Pedido{% endblock %}
+
 {% block backoffice_content %}
-<h2>Cadastro de Itens do Pedido</h2>
-<p>Em breve: gerenciamento dos itens vinculados aos pedidos.</p>
+  <div class="page-header">
+    <h2>{{ item and 'Editar Item do Pedido' or 'Novo Item do Pedido' }}</h2>
+  </div>
+
+  <form method="post" class="cadastro-form">
+    <div class="form-group">
+      <label for="order_id">Pedido</label>
+      <select id="order_id" name="order_id" required>
+        <option value="">Selecione...</option>
+        {% for pedido in pedidos %}
+          <option value="{{ pedido.id }}" {% if item and item.order_id == pedido.id %}selected{% endif %}>Pedido #{{ pedido.id }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="product_id">Produto</label>
+      <select id="product_id" name="product_id" required>
+        <option value="">Selecione...</option>
+        {% for produto in produtos %}
+          <option value="{{ produto.id }}" {% if item and item.product_id == produto.id %}selected{% endif %}>{{ produto.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantidade</label>
+      <input type="number" id="quantity" name="quantity" value="{{ item.quantity if item else 1 }}" min="1" required>
+    </div>
+
+    <div class="form-group">
+      <label for="unit_price">Preço unitário</label>
+      <input type="number" id="unit_price" name="unit_price" value="{{ item.unit_price if item else '0.00' }}" step="0.01" required>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">{{ item and 'Salvar alterações' or 'Criar item' }}</button>
+      <a class="btn btn-secondary" href="{{ url_for('backoffice.cadastro_item_pedido') }}">Voltar à lista</a>
+    </div>
+  </form>
 {% endblock %}

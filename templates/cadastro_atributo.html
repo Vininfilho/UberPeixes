@@ -1,0 +1,36 @@
+{% extends "base_backoffice.html" %}
+
+{% block title %}Cadastro de Atributos{% endblock %}
+
+{% block backoffice_content %}
+  <div class="page-header">
+    <h2>{{ atributo and 'Editar Atributo' or 'Novo Atributo' }}</h2>
+  </div>
+
+  <form method="post" class="cadastro-form">
+    <div class="form-group">
+      <label for="product_id">Produto</label>
+      <select id="product_id" name="product_id" required>
+        <option value="">Selecione...</option>
+        {% for produto in produtos %}
+          <option value="{{ produto.id }}" {% if atributo and atributo.product_id == produto.id %}selected{% endif %}>{{ produto.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="attribute_name">Nome do Atributo</label>
+      <input type="text" id="attribute_name" name="attribute_name" value="{{ atributo.attribute_name if atributo else '' }}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="attribute_value">Valor</label>
+      <input type="text" id="attribute_value" name="attribute_value" value="{{ atributo.attribute_value if atributo else '' }}" required>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">{{ atributo and 'Salvar alterações' or 'Criar atributo' }}</button>
+      <a class="btn btn-secondary" href="{{ url_for('backoffice.cadastro_atributo') }}">Voltar à lista</a>
+    </div>
+  </form>
+{% endblock %}

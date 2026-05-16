@@ -316,3 +316,101 @@ body.backoffice-page.sidebar-open header {
 .backoffice-nav .submenu li a:hover {
   background: #e0e0e0;
 }
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: #0466c8;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #f1f1f1;
+  color: #333;
+}
+
+.cadastro-form {
+  max-width: 640px;
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #444;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d8d8d8;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.list-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.list-table th,
+.list-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: left;
+}
+
+.list-table th {
+  background: #f7f9fb;
+  color: #333;
+  font-weight: 700;
+}
+
+.list-table tbody tr:hover {
+  background: #f5f8ff;
+}
+
+.link-action {
+  color: #0466c8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-action:hover {
+  text-decoration: underline;
+}

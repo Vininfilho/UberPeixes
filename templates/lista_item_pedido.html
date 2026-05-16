@@ -1,0 +1,39 @@
+{% extends "base_backoffice.html" %}
+
+{% block title %}Lista de Itens do Pedido{% endblock %}
+
+{% block backoffice_content %}
+  <div class="page-header">
+    <h2>Itens do Pedido</h2>
+    <a class="btn btn-primary" href="{{ url_for('backoffice.item_pedido_detail') }}">Criar novo item</a>
+  </div>
+
+  {% if itens %}
+    <table class="list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Pedido</th>
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Preço Unitário</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in itens %}
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.order_id or '-' }}</td>
+            <td>{{ item.product_id or '-' }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.unit_price }}</td>
+            <td><a class="link-action" href="{{ url_for('backoffice.item_pedido_detail', item_id=item.id) }}">Editar</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há itens do pedido cadastrados.</p>
+  {% endif %}
+{% endblock %}

@@ -1,6 +1,24 @@
 {% extends "base_backoffice.html" %}
 {% block title %}Cadastro de Marcas{% endblock %}
 {% block backoffice_content %}
-<h2>Cadastro de Marcas</h2>
-<p>Em breve: formulário para cadastrar marcas.</p>
+  <div class="page-header">
+    <h2>{{ marca and 'Editar Marca' or 'Nova Marca' }}</h2>
+  </div>
+
+  <form method="post" class="cadastro-form">
+    <div class="form-group">
+      <label for="name">Nome da Marca</label>
+      <input type="text" id="name" name="name" value="{{ marca.name if marca else '' }}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="country">País</label>
+      <input type="text" id="country" name="country" value="{{ marca.country if marca else '' }}" required>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">{{ marca and 'Salvar alterações' or 'Criar marca' }}</button>
+      <a class="btn btn-secondary" href="{{ url_for('backoffice.cadastro_marca') }}">Voltar à lista</a>
+    </div>
+  </form>
 {% endblock %}

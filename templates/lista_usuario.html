@@ -1,0 +1,37 @@
+{% extends "base_backoffice.html" %}
+{% block title %}Lista de Usuários{% endblock %}
+{% block backoffice_content %}
+  <div class="page-header">
+    <h2>Usuários</h2>
+    <a class="btn btn-primary" href="{{ url_for('backoffice.usuario_detail') }}">Criar novo usuário</a>
+  </div>
+
+  {% if usuarios %}
+    <table class="list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Criado em</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for usuario in usuarios %}
+          <tr>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.name }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.created_at }}</td>
+            <td>
+              <a class="link-action" href="{{ url_for('backoffice.usuario_detail', user_id=usuario.id) }}">Editar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não há usuários cadastrados.</p>
+  {% endif %}
+{% endblock %}

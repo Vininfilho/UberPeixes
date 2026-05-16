@@ -21,7 +21,7 @@
         <h1 class="logo-text"><span class="logo-text-uber">Uber</span><span class="logo-text-peixes">peixes</span></h1>
         <span class="logo-subtext">peixes ornamentais</span>
         {% if session.get('user_id') %}
-          <span class="user-info">Bem-vindo, Vinicius Nunes Rodrigues Filho</span>
+          <span class="user-info">Bem-vindo, {{ session.get('user_name', 'usuário') }}</span>
         {% endif %}
       </div>
     </div>
