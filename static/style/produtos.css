@@ -20,8 +20,10 @@
 /* Grid de produtos */
 .lista-produtos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(5, 1fr); /* Cada coluna ocupará 1/5 da largura total */
+  grid-auto-rows: minmax(200px, auto); /* Altura mínima de 200px para cada linha */
   gap: 20px;
+  justify-content: center;
 }
 
 /* Card de produto */
@@ -35,16 +37,20 @@
 }
 
 .produto-card img {
-  width: 200px;        /* largura fixa */
-  height: 150px;       /* altura fixa */
-  object-fit: cover;   /* corta mantendo proporção */
+  width: 200px;        
+  height: 150px;       
+  object-fit: cover;  
   border-radius: 6px;
   display: block;
-  margin: 0 auto;      /* centraliza dentro do card */
+  margin: 0 auto;  
 }
 
 .produto-card h3 {
   margin: 10px 0 5px;
+}
+
+.produto-card p {
+  margin: 0;
 }
 
 .produto-card .preco {
@@ -59,6 +65,14 @@
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
+  width: 100%;
+   max-width: 200px;
+}
+
+.produto-card .descricao {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
 }
 
 .produto-card button:hover {

@@ -23,7 +23,7 @@ def home():
 @app.route('/produtos')
 def produtos():
     # Busca produtos
-    produtos_resp = supabase.table('products').select('id, name, price').order('id', desc=False).execute()
+    produtos_resp = supabase.table('products').select('id, name, price, description').order('id', desc=False).execute()
     produtos = produtos_resp.data if produtos_resp.data else []
 
     # Busca imagens principais

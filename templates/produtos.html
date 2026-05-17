@@ -7,30 +7,31 @@
 {% endblock %}
 
 {% block content %}
-  <main class="produtos-container">
-    <h2>Produtos</h2>
+<main class="produtos-container">
+  <h2>Produtos</h2>
 
-    <!-- Filtros -->
-    <div class="filtros">
-      <input type="text" placeholder="Buscar por nome..." class="busca">
-      <select class="categoria">
-        <option value="">Todas as categorias</option>
-        <option value="equipamentos">Equipamentos</option>
-        <option value="animais">Animais</option>
-        <option value="alimentos">Alimentos</option>
-      </select>
-    </div>
+  <!-- Filtros -->
+  <div class="filtros">
+    <input type="text" placeholder="Buscar por nome..." class="busca">
+    <select class="categoria">
+      <option value="">Todas as categorias</option>
+      <option value="equipamentos">Equipamentos</option>
+      <option value="animais">Animais</option>
+      <option value="alimentos">Alimentos</option>
+    </select>
+  </div>
 
-    <!-- Listagem de produtos -->
-    <div class="lista-produtos">
-      {% for produto in produtos %}
-        <div class="produto-card">
-          <img src="{{ produto.imagem_url }}" alt="{{ produto.name }}">
-          <h3>{{ produto.name }}</h3>
-          <p class="preco">R$ {{ "%.2f"|format(produto.price) }}</p>
-          <button>Adicionar ao carrinho</button>
-        </div>
-      {% endfor %}
-    </div>
-  </main>
+  <!-- Listagem de produtos -->
+  <div class="lista-produtos">
+    {% for produto in produtos %}
+      <div class="produto-card">
+        <img src="{{ produto.imagem_url }}" alt="{{ produto.name }}">
+        <h3>{{ produto.name }}</h3>
+        <p class="preco">R$ {{ "%.2f"|format(produto.price) }}</p>
+        <p class="descricao">{{ produto.description }}</p>
+        <button>Adicionar ao carrinho</button>
+      </div>
+    {% endfor %}
+  </div>
+</main>
 {% endblock %}
